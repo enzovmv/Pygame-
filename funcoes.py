@@ -22,3 +22,19 @@ def desenha_pixel_art(tela, desenho, x, y):
 
 def desenha_na_casa(tela, desenho, posicao):
     desenha_pixel_art(tela, desenho, posicao[0] * CELULA, TOPO + posicao[1] * CELULA)
+
+def desenha_tabuleiro(tela):
+    pygame.draw.rect(tela, (47, 79, 62), (0, 0, LARGURA, TOPO))
+    pygame.draw.rect(tela, (140, 95, 50), (0, TOPO - 5, LARGURA, 5))
+    for x in range(COLUNAS):
+        for y in range(LINHAS):
+            if (x + y) % 2 == 0:
+                cor = (236, 230, 214)
+                pontinhos = piso_bege
+            else:
+                cor = (204, 208, 214)
+                pontinhos = piso_cinza
+            pygame.draw.rect(tela, cor, (x * CELULA, TOPO + y * CELULA, CELULA, CELULA))
+            desenha_pixel_art(tela, pontinhos, x * CELULA, TOPO + y * CELULA)
+            pygame.draw.rect(tela, (160, 158, 150), (x * CELULA, TOPO + y * CELULA, CELULA, 1))
+            pygame.draw.rect(tela, (160, 158, 150), (x * CELULA, TOPO + y * CELULA, 1, CELULA))
