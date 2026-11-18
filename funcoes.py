@@ -63,3 +63,15 @@ def sorteia_posicao(ocupadas):
     while posicao in ocupadas:
         posicao = [random.randint(0, COLUNAS - 1), random.randint(0, LINHAS - 1)]
     return posicao
+
+
+def anda(cobra, direcao):
+    cabeca = cobra[0]
+    if direcao == "direita":
+        return [cabeca[0] + 1, cabeca[1]]
+    elif direcao == "esquerda":
+        return [cabeca[0] - 1, cabeca[1]]
+    elif direcao == "cima":
+        return [cabeca[0], cabeca[1] - 1]
+    else:
+        return [cabeca[0], cabeca[1] + 1]
