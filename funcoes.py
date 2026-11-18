@@ -53,3 +53,7 @@ def desenha_cobra(tela, cobra, foto_cabeca):
 def escreve(tela, fonte, texto, x, y, cor):
     tela.blit(fonte.render(texto, True, (0, 0, 0)), (x + 2, y + 2))
     tela.blit(fonte.render(texto, True, cor), (x, y))
+
+def escreve_no_meio(tela, fonte, texto, y, cor):
+    largura = fonte.size(texto)[0]
+    escreve(tela, fonte, texto, (LARGURA - largura) // 2, y, cor)
