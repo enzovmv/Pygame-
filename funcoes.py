@@ -19,3 +19,6 @@ def desenha_pixel_art(tela, desenho, x, y):
                 pygame.draw.rect(tela, CORES[letra], (x + coluna * 4, y + linha * 4, 4, 4))
             coluna += 1
         linha += 1
+
+def desenha_na_casa(tela, desenho, posicao):
+    desenha_pixel_art(tela, desenho, posicao[0] * CELULA, TOPO + posicao[1] * CELULA)
