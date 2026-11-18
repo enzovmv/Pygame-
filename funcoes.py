@@ -42,3 +42,10 @@ def desenha_tabuleiro(tela):
 def desenha_quadro(tela, x, y, largura, altura):
     pygame.draw.rect(tela, (140, 95, 50), (x - 6, y - 6, largura + 12, altura + 12))
     pygame.draw.rect(tela, (47, 79, 62), (x, y, largura, altura))
+
+def desenha_cobra(tela, cobra, foto_cabeca):
+    for i in range(1, len(cobra)):
+        desenha_na_casa(tela, corpo, cobra[i])
+    x = cobra[0][0] * CELULA - 4
+    y = TOPO + cobra[0][1] * CELULA - 4
+    tela.blit(foto_cabeca, (x, y))
