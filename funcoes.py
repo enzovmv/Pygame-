@@ -4,23 +4,18 @@ from pixel_arts import *
 
 COLUNAS = 17
 LINHAS = 15
-PIXEL = 4
-CELULA = 8 * PIXEL
-TOPO = 48
+CELULA = 32
+TOPO = 50
 LARGURA = COLUNAS * CELULA
 ALTURA = LINHAS * CELULA + TOPO
 
-VELOCIDADE_INICIAL = 6
-VELOCIDADE_MAXIMA = 18
-PARTES_POR_NIVEL = 3
 
-PASSOS_VOLTA = 5
-VIDAS_MAXIMAS = 3
-DURACAO_LENTO = 10000
-TEMPO_ITEM_NO_MAPA = 8000
-PONTOS_PARA_ITENS = 3
-
-CHANCE_ITEM = {
-    "chance": 12,
-    "tempo": 15,
-}
+def desenha_pixel_art(tela, desenho, x, y):
+    linha = 0
+    for texto in desenho:
+        coluna = 0
+        for letra in texto:
+            if letra != ".":
+                pygame.draw.rect(tela, CORES[letra], (x + coluna * 4, y + linha * 4, 4, 4))
+            coluna += 1
+        linha += 1
