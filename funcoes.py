@@ -57,3 +57,9 @@ def escreve(tela, fonte, texto, x, y, cor):
 def escreve_no_meio(tela, fonte, texto, y, cor):
     largura = fonte.size(texto)[0]
     escreve(tela, fonte, texto, (LARGURA - largura) // 2, y, cor)
+
+def sorteia_posicao(ocupadas):
+    posicao = [random.randint(0, COLUNAS - 1), random.randint(0, LINHAS - 1)]
+    while posicao in ocupadas:
+        posicao = [random.randint(0, COLUNAS - 1), random.randint(0, LINHAS - 1)]
+    return posicao
