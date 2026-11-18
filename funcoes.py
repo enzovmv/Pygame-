@@ -75,3 +75,12 @@ def anda(cobra, direcao):
         return [cabeca[0], cabeca[1] - 1]
     else:
         return [cabeca[0], cabeca[1] + 1]
+
+def bateu(nova_cabeca, cobra):
+    if nova_cabeca[0] < 0 or nova_cabeca[0] >= COLUNAS:
+        return True
+    if nova_cabeca[1] < 0 or nova_cabeca[1] >= LINHAS:
+        return True
+    if nova_cabeca in cobra[:-1]:
+        return True
+    return False
