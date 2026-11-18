@@ -49,3 +49,7 @@ def desenha_cobra(tela, cobra, foto_cabeca):
     x = cobra[0][0] * CELULA - 4
     y = TOPO + cobra[0][1] * CELULA - 4
     tela.blit(foto_cabeca, (x, y))
+
+def escreve(tela, fonte, texto, x, y, cor):
+    tela.blit(fonte.render(texto, True, (0, 0, 0)), (x + 2, y + 2))
+    tela.blit(fonte.render(texto, True, cor), (x, y))
