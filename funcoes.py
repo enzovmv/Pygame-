@@ -38,3 +38,7 @@ def desenha_tabuleiro(tela):
             desenha_pixel_art(tela, pontinhos, x * CELULA, TOPO + y * CELULA)
             pygame.draw.rect(tela, (160, 158, 150), (x * CELULA, TOPO + y * CELULA, CELULA, 1))
             pygame.draw.rect(tela, (160, 158, 150), (x * CELULA, TOPO + y * CELULA, 1, CELULA))
+
+def desenha_quadro(tela, x, y, largura, altura):
+    pygame.draw.rect(tela, (140, 95, 50), (x - 6, y - 6, largura + 12, altura + 12))
+    pygame.draw.rect(tela, (47, 79, 62), (x, y, largura, altura))
