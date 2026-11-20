@@ -92,3 +92,9 @@ def calcula_velocidade(cobra, lento):
     if lento:
         velocidade = max(3, velocidade // 2)
     return velocidade
+
+def copia_cobra(cobra):
+    copia = []
+    for parte in cobra:
+        copia.append([parte[0], parte[1]])
+    return copia
