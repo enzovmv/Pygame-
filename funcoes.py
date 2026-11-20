@@ -84,3 +84,11 @@ def bateu(nova_cabeca, cobra):
     if nova_cabeca in cobra[:-1]:
         return True
     return False
+
+def calcula_velocidade(cobra, lento):
+    velocidade = 6 + (len(cobra) - 3) // 3
+    if velocidade > 18:
+        velocidade = 18
+    if lento:
+        velocidade = max(3, velocidade // 2)
+    return velocidade
