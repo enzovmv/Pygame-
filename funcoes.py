@@ -98,3 +98,12 @@ def copia_cobra(cobra):
     for parte in cobra:
         copia.append([parte[0], parte[1]])
     return copia
+
+def direcao_contraria(direcao):
+    if direcao == "direita":
+        return "esquerda"
+    if direcao == "esquerda":
+        return "direita"
+    if direcao == "cima":
+        return "baixo"
+    return "cima"
