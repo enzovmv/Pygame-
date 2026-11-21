@@ -63,3 +63,11 @@ while rodando:
                 if tecla != direcao_contraria(direcao):
                     nova_direcao = tecla
                 estado = "jogando"
+    
+    if estado == "jogando":
+            historico.append([copia_cobra(cobra), direcao, comida, pontos])
+            if len(historico) > 6:
+                del historico[0]
+    
+            direcao = nova_direcao
+            cabeca = anda(cobra, direcao)
