@@ -71,3 +71,48 @@ while rodando:
     
             direcao = nova_direcao
             cabeca = anda(cobra, direcao)
+
+            if bateu(cabeca, cobra):
+               if chances > 0:
+                 chances = chances - 1
+                 cobra = historico[0][0]
+                 direcao = historico[0][1]
+                 nova_direcao = direcao
+                 comida = historico[0][2]
+                 pontos = historico[0][3]
+                 historico = []
+                 estado = "voltou"
+               else:
+                 estado = "fim"
+            else:
+                 cobra = [cabeca] + cobra
+                 if cabeca == comida:
+                     pontos = pontos + 1
+                     recorde = max(recorde, pontos)
+                     comida = sorteia_posicao(cobra + [pos_chance, pos_tempo])
+                 else:
+                     del cobra[-1]
+                 if cabeca == pos_chance:
+                     if chances < 3:
+                      chances = chances + 1
+                     pos_chance = None
+
+                 if cabeca == pos_tempo:
+                     lento_ate = agora + 10000
+                     pos_tempo = None
+
+                 if pos_chance == None and pontos >= 3 and random.randint(1, 100) <= 2:
+                     pos_chance = sorteia_posicao(cobra + [comida, pos_tempo])
+                     some_chance = agora + 8000
+
+                 if pos_tempo == None and pontos >= 3 and random.randint(1, 100) <= 2:
+                     pos_tempo = sorteia_posicao(cobra + [comida, pos_chance])
+                     some_tempo = agora + 8000
+
+                 if pos_chance != None and agora > some_chance:
+                     pos_chance = None
+
+                 if pos_tempo != None and agora > some_tempo:
+                     pos_tempo = None
+
+ 
