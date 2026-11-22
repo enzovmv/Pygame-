@@ -115,4 +115,50 @@ while rodando:
                  if pos_tempo != None and agora > some_tempo:
                      pos_tempo = None
 
- 
+    desenha_tabuleiro(tela)
+    desenha_na_casa(tela, moeda, comida)
+    if pos_chance != None:
+        desenha_na_casa(tela, moeda_chance, pos_chance)
+    if pos_tempo != None:
+        desenha_na_casa(tela, moeda_tempo, pos_tempo)
+    desenha_cobra(tela, cobra, foto_cabeca)
+
+    escreve(tela, fonte, "Pontos: " + str(pontos), 10, 14, branco)
+    escreve(tela, fonte, "Recorde: " + str(recorde), 150, 14, amarelo)
+    desenha_pixel_art(tela, coracao, 318, 13)
+    escreve(tela, fonte, "x" + str(chances), 352, 14, branco)
+    if lento:
+        segundos = int((lento_ate - agora) / 1000) + 1
+        desenha_pixel_art(tela, moeda_tempo, 420, 9)
+        escreve(tela, fonte, str(segundos) + "s", 458, 14, azul)
+
+    if estado == "inicio":
+        desenha_quadro(tela, 30, 110, LARGURA - 60, 330)
+        escreve_no_meio(tela, fonte_grande, "PY SNAKE", 130, amarelo)
+        desenha_pixel_art(tela, moeda_chance, 50, 215)
+        escreve(tela, fonte, "Moeda da chance: volta 5 passos", 92, 220, branco)
+        desenha_pixel_art(tela, moeda_tempo, 50, 265)
+        escreve(tela, fonte, "Moeda do tempo: devagar por 10s", 92, 270, branco)
+        escreve_no_meio(tela, fonte, "Quanto maior a cobra, mais rápido!", 325, azul)
+        escreve_no_meio(tela, fonte, "Aperte uma seta para começar", 385, amarelo)
+
+    if estado == "voltou":
+        desenha_quadro(tela, 30, 70, LARGURA - 60, 70)
+        escreve_no_meio(tela, fonte, "Voltou no tempo!", 80, amarelo)
+        escreve_no_meio(tela, fonte, "Aperte uma seta para continuar", 108, branco)
+
+    if estado == "fim":
+        desenha_quadro(tela, 30, 170, LARGURA - 60, 200)
+        escreve_no_meio(tela, fonte_grande, "FIM DE JOGO", 190, branco)
+        escreve_no_meio(tela, fonte, "Pontos: " + str(pontos), 265, branco)
+        escreve_no_meio(tela, fonte, "Recorde: " + str(recorde), 295, amarelo)
+        escreve_no_meio(tela, fonte, "Enter para jogar de novo", 335, branco)
+
+    pygame.display.flip()
+
+    if estado == "jogando":
+        relogio.tick(calcula_velocidade(cobra, lento))
+    else:
+        relogio.tick(30)
+
+pygame.quit()
