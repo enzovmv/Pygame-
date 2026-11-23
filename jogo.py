@@ -12,6 +12,9 @@ fonte_grande = pygame.font.SysFont("consolas", 50, bold=True)
 
 pasta = os.path.dirname(os.path.abspath(__file__))
 foto_cabeca = pygame.image.load(os.path.join(pasta, "cabeca.png"))
+pygame.mixer.music.load(os.path.join(pasta, "musica.wav"))
+pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.play(-1)
 
 branco = (255, 255, 255)
 amarelo = (255, 220, 80)
